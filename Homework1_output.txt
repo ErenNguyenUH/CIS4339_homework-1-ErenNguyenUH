@@ -1,0 +1,13 @@
+
+*Exercise A result of show dbs*
+admin        41 kB
+config      111 kB
+employees  8.19 kB
+local      73.7 kB
+
+
+*Exercise A result of creating collection*
+{ ok: 1 }
+*Exercise A result of show collections*
+techdep
+

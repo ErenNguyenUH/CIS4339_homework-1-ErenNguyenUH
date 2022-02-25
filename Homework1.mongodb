@@ -1,3 +1,18 @@
 //connect to local hosted database
 mongosh localhost:27017  
 
+//Exercise A: create new database named employees
+use employees
+show dbs 
+
+//Exercise B: create and add collection to database temporary
+use temporary
+db.createCollection('test');
+
+db.dropDatabase("temporary");
+show dbs
+show collections
+
+//switch to empoloyees database in part a and create more collections
+use employees
+
