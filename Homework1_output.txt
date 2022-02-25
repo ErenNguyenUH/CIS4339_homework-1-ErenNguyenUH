@@ -1,13 +1,143 @@
 
-*Exercise A result of show dbs*
+//Exercise A result of show dbs
 admin        41 kB
 config      111 kB
 employees  8.19 kB
 local      73.7 kB
 
-
-*Exercise A result of creating collection*
-{ ok: 1 }
-*Exercise A result of show collections*
+//Exercise A result of show collections
 techdep
+
+//Exercise B result of showing collections in temporary database
+test
+
+//After remove database test show dbs command output nothing
+
+//Exercise C output showing collections in employees database
+humanresource
+manager
+techdep
+
+//Exercise C output documents for techdep coillection
+[
+  {
+    _id: ObjectId("6218b55a866ff53617e20c02"),
+    employeeid: 1,
+    name: 'Smith Hammer',
+    salary: 60000
+  },
+  {
+    _id: ObjectId("6218b606866ff53617e20c03"),
+    employeeid: 2,
+    name: 'Chris Test',
+    salary: 55000
+  },
+  {
+    _id: ObjectId("6218b606866ff53617e20c04"),
+    employeeid: 3,
+    name: 'Bob Hanser',
+    salary: 75000
+  }
+]
+
+//Exercise C output documents for manager coillection
+[
+  {
+    _id: ObjectId("6218b665866ff53617e20c05"),
+    employeeid: 1,
+    name: 'Landa Toyota',
+    salary: 95000
+  },
+  {
+    _id: ObjectId("6218b665866ff53617e20c06"),
+    employeeid: 2,
+    name: 'Yamaha Suzuki',
+    salary: 85000
+  }
+]
+
+//Exercise C output documents for humanresource coillection
+[
+  {
+    _id: ObjectId("6218b6c9866ff53617e20c07"),
+    employeeid: 1,
+    name: 'Honda Civic',
+    salary: 60000
+  },
+  {
+    _id: ObjectId("6218b6c9866ff53617e20c08"),
+    employeeid: 2,
+    name: 'Mazda Test',
+    salary: 65000
+  }
+]
+
+
+//Exercise D output to db.techdep.find({ employeeid:1});
+[
+  {
+    _id: ObjectId("6218b55a866ff53617e20c02"),
+    employeeid: 1,
+    name: 'Smith Hammer',
+    salary: 60000
+  }
+]
+
+//Exercise D output to db.techdep.find({ employeeid:2455});
+[
+  {
+    _id: ObjectId("6218ba35866ff53617e20c0c"),
+    employeeid: 2455,
+    name: 'Syed',
+    salary: 90000
+  }
+]
+
+//Exercise D output to db.techdep.find({ name:"John Steight"});
+[
+  {
+    _id: ObjectId("6218ba7d866ff53617e20c0e"),
+    employeeid: 1187,
+    name: 'John Steight',
+    salary: 75000
+  }
+]
+
+//Exercise D output to db.techdep.find({ name:"Syed"});
+[
+  {
+    _id: ObjectId("6218ba35866ff53617e20c0c"),
+    employeeid: 2455,
+    name: 'Syed',
+    salary: 90000
+  }
+]
+
+//Exercise D output for document with name field starting John
+[
+  {
+    _id: ObjectId("6218ba7d866ff53617e20c0e"),
+    employeeid: 1187,
+    name: 'John Steight',
+    salary: 75000
+  }
+]
+
+
+//Exercise D output for document with name field caontaining John
+[
+  {
+    _id: ObjectId("6218ba36866ff53617e20c0d"),
+    employeeid: 24113,
+    name: 'Wright John',
+    salary: 65000
+  },
+  {
+    _id: ObjectId("6218ba7d866ff53617e20c0e"),
+    employeeid: 1187,
+    name: 'John Steight',
+    salary: 75000
+  }
+]
+
 
