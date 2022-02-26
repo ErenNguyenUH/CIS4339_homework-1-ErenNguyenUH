@@ -1,9 +1,11 @@
 //connect to local hosted database
 mongosh localhost:27017  
 
+
 //Exercise A: create new database named employees
 use employees
 show dbs 
+
 
 //Exercise B: create and add collection to database temporary
 use temporary
@@ -19,6 +21,7 @@ db.createCollection('humanresource');
 db.createCollection('manager');
 show collections
 
+
 //Exercise C: insert documents to created collections, then use find to retrive all data
 db.techdep.insert({employeeid: 01, name:"Smith Hammer", salary: 60000});
 db.techdep.insertMany([{employeeid: 02, name:"Chris Test", salary: 55000},{employeeid: 03, name:"Bob Hanser", salary: 75000}]);
@@ -29,6 +32,7 @@ db.manager.find();
 
 db.humanresource.insertMany([ {employeeid: 01, name:"Honda Civic", salary: 60000},{employeeid: 02, name:"Mazda Test", salary:65000}]);
 db.humanresource.find();
+
 
 //Exercise D: insert given data and use find command in different ways
 db.techdep.insert({
@@ -60,4 +64,30 @@ db.techdep.find({ name:/^John/});
 //find ducument(s) with name field containing "John"
 db.techdep.find({ name:/John/});
 
-//Exercise E:
+
+//Exercise E: filter queries
+//import data from given json file
+ .\mongoimport --db employees --collection zips --file zips.json
+// find cities with population less than 1500
+db.zips.find({pop:{$lt:1500}})
+//show all data with city name CHESTER
+db.zips.find({city:{$eq:"CHESTER"}})
+//find data with given location using array query
+db.zips.find({loc:{$all:[-84.38570799999999, 45.015207]}})
+//find data using or logical opperator 
+db.zips.find({$or:[{city:"WARREN"},{loc:[-80.76424299999999, 41.231819]}]})
+
+
+//Exercise F:
+//find employees with salary over 7500 in techdep
+db.techdep.find( { $where: function() { return (this.salary >75000) }})
+//find employees with name contains John in techdep
+db.techdep.find( { $where: function() { return (this.name.includes("John"))}})
+
+
+//Exercise G:
+//get all data from techdep collection with only name and salary fields
+db.techdep.find({},{
+    name: true,
+    salary:true
+    })
